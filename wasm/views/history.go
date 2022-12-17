@@ -120,7 +120,8 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 				var contentHeaders = modalHeaders.Div()
 				contentHeaders.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
 				for k, v := range rq_headers {
-					contentHeaders.P(strings.Join(v, ", ")).Style("line-height:50%").TextAfter().B(k + ": ")
+					contentHeaders.Span(strings.Join(v, ", ")).Style("line-height:50%").TextAfter().B(k + ": ")
+					contentHeaders.Br()
 				}
 				var modalHeader = modal.Div().Class("modal-header")
 				modalHeader.H5().Class("modal-title").InnerText("Body")
