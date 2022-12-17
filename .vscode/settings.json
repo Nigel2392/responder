@@ -1,0 +1,15 @@
+{
+    "doki.statusbar.name": "Kelly",
+    "doki.sticker.css": "z-index:100;background-position:98% 97%;",
+    "doki.wallpaper.path": "c:/vscode-theme/burger.png",
+    "doki.background.path": "c:/vscode-theme/burger.png",
+    "doki.sticker.path": "c:/vscode-theme/mario.gif",
+    "go.toolsEnvVars": {
+        "GOOS": "js",
+        "GOARCH": "wasm"
+        // "GOOS": "windows",
+        // "GOARCH": "amd64"
+    },
+    "go.buildTags": "wails",
+    "workbench.colorTheme": "2077"
+}
