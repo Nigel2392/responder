@@ -277,6 +277,14 @@ func makeRequestForm(queryList *queryvalues.QueryValues, responseBox *elems.Elem
 			return false
 		}).Do(func(resp *http.Response) {
 			var bodyBytes, _ = io.ReadAll(resp.Body)
+
+			// Check if the response is JSON
+			if json.Valid(bodyBytes) {
+				var prettyJSON bytes.Buffer
+				json.Indent(&prettyJSON, bodyBytes, "", "    ")
+				bodyBytes = prettyJSON.Bytes()
+			}
+
 			var el = elems.Div().InnerHTML(string(bodyBytes)).Style("white-space: pre")
 			responseBox.WasmClearInnerHTML()
 			el.WasmGenerate("response-box")

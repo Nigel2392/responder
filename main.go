@@ -30,7 +30,7 @@ func main() {
 	var err = wails.Run(&options.App{
 		Title:  "Remoter",
 		Width:  1024,
-		Height: 845,
+		Height: 848,
 		AssetServer: &assetserver.Options{
 			Assets:     assets,
 			Middleware: assetserver.ChainMiddleware(middleWare),
