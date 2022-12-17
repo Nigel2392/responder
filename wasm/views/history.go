@@ -56,8 +56,8 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 			}
 			var data, _ = queryvalues.WailsEncodeB64(v)
 			var cardFooter = card.Div().Class("card-footer")
-			var anchor = elems.A().Class("btn", "btn-primary", "w-100").Href("data:text/plain;charset=utf-8," + data).InnerText("Use")
-			var bodyBtn = elems.A().Class("btn", "btn-secondary", "w-100").Href(v.URL).InnerText("Body")
+			var anchor = elems.A("Use").Class("btn", "btn-primary", "w-100").Href("data:text/plain;charset=utf-8," + data)
+			var bodyBtn = elems.A("Data").Class("btn", "btn-secondary", "w-100").Href(v.URL)
 			cardFooter.Div().Class("row").Add(
 				elems.Div().Class("col-3").Add(
 					anchor,
@@ -118,7 +118,6 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 				var modalHeaders = modal.Div().Class("modal-body")
 				var contentHeaders = modalHeaders.Div()
 				contentHeaders.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
-				contentHeaders.Pre().InnerText(v.URL)
 				for k, v := range rq_headers {
 					contentHeaders.P().InnerText(k + ": " + strings.Join(v, ", ")).Style("line-height:50%")
 				}
