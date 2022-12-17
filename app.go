@@ -58,7 +58,7 @@ func (a *App) PushToHistory(jsonVals string) {
 		panic(err)
 	}
 
-	Hist.Add(s.QueryValues, s.Method, s.URL)
+	Hist.Add(s.QueryValues, s.Method, s.URL, s.RsHeaders, s.RsBody)
 }
 
 func (a *App) SaveHistory() {
@@ -108,7 +108,7 @@ func (a *App) PushToSaved(jsonVals string) {
 	}
 
 	var sav = queryvalues.History(Saved)
-	sav.Add(s.QueryValues, s.Method, s.URL)
+	sav.Add(s.QueryValues, s.Method, s.URL, s.RsHeaders, s.RsBody)
 	Saved = queryvalues.Saves(sav)
 }
 

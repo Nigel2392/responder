@@ -112,9 +112,9 @@ func (q *QueryValues) StringByType(typ string) string {
 			if i < len(q.Values)-1 {
 				b.WriteString("&")
 			}
-			if i < len(q.Values)-1 && q.Values[i+1].Type == typ {
-				b.WriteString("&")
-			}
+		}
+		if i < len(q.Values)-1 && q.Values[i+1].Type == typ && q.Values[i].Type == typ {
+			b.WriteString("&")
 		}
 	}
 	return b.String()
@@ -182,11 +182,20 @@ type Save struct {
 	QueryValues *QueryValues
 	Method      string
 	URL         string
+	RsHeaders   map[string][]string
+	RsBody      []byte
 	Timestamp   time.Time
 }
 
-func (h *History) Add(qv *QueryValues, method string, url string) {
-	h.Saves = append(h.Saves, Save{qv, method, url, time.Now()})
+func (h *History) Add(qv *QueryValues, method string, url string, rsHeaders map[string][]string, rsBody []byte) {
+	h.Saves = append(h.Saves, Save{
+		QueryValues: qv,
+		Method:      method,
+		URL:         url,
+		Timestamp:   time.Now(),
+		RsHeaders:   rsHeaders,
+		RsBody:      rsBody,
+	})
 }
 
 func (h *History) Save() {

@@ -64,13 +64,27 @@ func GenMakeRequest(body *elems.Element, queryList *queryvalues.QueryValues, req
 	var colThree = row.Div().Class("col-6")
 	// var colThree = row.Div().Class("col-6")
 	var queryItems = elems.Div().ID("query-items")
-	var responseBox = elems.Div().ID("response-box")
+	var boxRow = elems.Div().Class("row").Class("mt-2")
+	var boxColOne = boxRow.Div().Class("col-8")
+	var boxColTwo = boxRow.Div().Class("col-4")
+	var responseBox = boxColOne.Div().ID("response-box")
+	var headerBox = boxColTwo.Div().ID("header-box")
 
 	responseBox.Style(
 		"border: 1px solid #ced4da",
 		"border-radius: 5px",
 		"padding: 10px",
 		"height: 350px",
+		"width: 100%",
+		"overflow-y: scroll",
+		"background-color: #fff",
+	)
+
+	headerBox.Style(
+		"border: 1px solid #ced4da",
+		"border-radius: 5px",
+		"padding: 10px",
+		"height: 100%",
 		"width: 100%",
 		"overflow-y: scroll",
 		"background-color: #fff",
@@ -123,7 +137,7 @@ func GenMakeRequest(body *elems.Element, queryList *queryvalues.QueryValues, req
 			),
 		),
 		form.Class("mt-2"),
-		responseBox,
+		boxRow,
 	)
 	colTwo.Add(
 		elems.Div().Class("row").Class("mt-2").Add(
@@ -217,7 +231,7 @@ func makeRequestForm(queryList *queryvalues.QueryValues, responseBox *elems.Elem
 		cli.ChangeRequest(func(rq *http.Request) {
 			// Set the query values
 			rq.URL.RawQuery = queryList.StringByType(queryType)
-			println(fmt.Sprintf("Request URL: %s", queryList.StringByType(queryType)))
+			println(fmt.Sprintf("Request Queries: %s, URL: %s", queryList.StringByType(queryType), rq.URL.String()))
 			var formPresentJson, formPresent, formPresentMultipart = false, false, false
 			for _, qv := range queryList.Values {
 				if qv.Type == headerType {
@@ -266,10 +280,17 @@ func makeRequestForm(queryList *queryvalues.QueryValues, responseBox *elems.Elem
 			var el = elems.Div().InnerHTML(string(bodyBytes)).Style("white-space: pre")
 			responseBox.WasmClearInnerHTML()
 			el.WasmGenerate("response-box")
+			js.Global().Get("document").Call("getElementById", "header-box").Set("innerHTML", "")
+			for k, v := range resp.Header {
+				helem := elems.Div().InnerHTML(fmt.Sprintf("%s: %s", k, strings.Join(v, ", ")))
+				helem.WasmGenerate("header-box")
+			}
 			save := queryvalues.Save{
 				URL:         searchURL.URL,
 				Method:      rqTyp,
 				QueryValues: queryList,
+				RsHeaders:   resp.Header,
+				RsBody:      bodyBytes,
 			}
 			// Save the query values to json
 			jsondata, err := queryvalues.WailsEncode(save)

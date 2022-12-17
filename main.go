@@ -28,9 +28,9 @@ func main() {
 
 	// Create application with options
 	var err = wails.Run(&options.App{
-		Title:  "Frameless",
+		Title:  "Remoter",
 		Width:  1024,
-		Height: 768,
+		Height: 845,
 		AssetServer: &assetserver.Options{
 			Assets:     assets,
 			Middleware: assetserver.ChainMiddleware(middleWare),

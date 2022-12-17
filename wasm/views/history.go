@@ -46,8 +46,8 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 		for _, v := range hist.Saves {
 			var card = elems.Div().Class("card mb-4")
 			card.Div().Class("card-header").InnerText(v.URL).TextAfter().B(v.Method + ": ")
+			var cardBody = card.Div().Class("card-body")
 			if len(v.QueryValues.Values) > 0 {
-				var cardBody = card.Div().Class("card-body")
 				var cardText = cardBody.Div().Class("card-text")
 				var cardList = cardText.Ul().Class("list-group list-group-flush")
 				for _, v := range v.QueryValues.Values {
@@ -56,15 +56,21 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 			}
 			var data, _ = queryvalues.WailsEncodeB64(v)
 			var cardFooter = card.Div().Class("card-footer")
-			var anchor = elems.A().Class("btn", "btn-primary").Href("data:text/plain;charset=utf-8," + data).InnerText("Use")
+			var anchor = elems.A().Class("btn", "btn-primary", "w-100").Href("data:text/plain;charset=utf-8," + data).InnerText("Use")
+			var bodyBtn = elems.A().Class("btn", "btn-secondary", "w-100").Href(v.URL).InnerText("Body")
 			cardFooter.Div().Class("row").Add(
-				elems.Div().Class("col-6").Add(
+				elems.Div().Class("col-3").Add(
 					anchor,
 				),
-				elems.Div().Class("col-6").Style("text-align:right;").Add(
+				elems.Div().Class("col-6").Style("text-align:center").Add(
+					bodyBtn,
+				),
+				elems.Div().Class("col-3").Style("text-align:right").Add(
 					elems.H6().Class("text-muted").InnerText(v.Timestamp.Format("2006-01-02 15:04:05")),
 				),
 			)
+			var rq_body, rq_headers = v.RsBody, v.RsHeaders
+
 			var _, rdyAnchor = anchor.AddEventListener("click", func(this js.Value, args []js.Value) any {
 				var data = args[0].Get("target").Get("href").String()
 				data = strings.TrimPrefix(data, "data:text/plain;charset=utf-8,")
@@ -78,7 +84,59 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 				GenMakeRequest(body, save.QueryValues, save.URL)
 				return nil
 			})
-			card.WasmGenerate("history", rdyAnchor)
+			var _, rdyBodyBtn = bodyBtn.AddEventListener("click", func(this js.Value, args []js.Value) any {
+				args[0].Call("preventDefault")
+				overlay := elems.Div().Class("overlay")
+				overlay.Style(
+					"position:fixed",
+					"top:0",
+					"left:0",
+					"width:100%",
+					"height:100%",
+					"background-color:rgba(0,0,0,0.5)",
+					"z-index:1",
+					"display:flex",
+					"justify-content:center",
+					"align-items:center",
+				)
+				var modal = overlay.Div()
+				modal.Style(
+					"position:relative",
+					"width:80%",
+					"max-width:800px",
+					"height:80%",
+					"background-color:#fff",
+					"z-index:2",
+					"overflow:auto",
+					"display:flex",
+					"flex-direction:column",
+				)
+				var modalClose = modal.Button().Class("btn", "btn-secondary").InnerText("Close").Onclick("this.closest('.overlay').remove()")
+				modalClose.Style("padding:10px", "margin:10px")
+				var modalHeader = modal.Div().Class("modal-header")
+				modalHeader.H5().Class("modal-title").InnerText("Body")
+				var modalBody = modal.Div().Class("modal-body")
+				var contentBody = modalBody.Div().Class("content-body")
+				contentBody.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
+				contentBody.Pre().InnerText(string(rq_body))
+				var modalHeaders = modal.Div().Class("modal-body")
+				var contentHeaders = modalHeaders.Div()
+				contentHeaders.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
+				for k, v := range rq_headers {
+					contentHeaders.P().InnerText(k + ": " + strings.Join(v, ", "))
+				}
+
+				// var modalFooter = modal.Div()
+				//modalFooter.Style(
+				//	"position:absolute",
+				//	"left:10px",
+				//	"right:10px",
+				//	"bottom:10px",
+				//)
+				overlay.WasmGenerate("content-body")
+				return nil
+			})
+			card.WasmGenerate("history", rdyAnchor, rdyBodyBtn)
 		}
 		return nil
 	}))
