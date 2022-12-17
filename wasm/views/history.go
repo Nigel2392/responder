@@ -46,8 +46,8 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 		for _, v := range hist.Saves {
 			var card = elems.Div().Class("card mb-4")
 			card.Div().Class("card-header").InnerText(v.URL).TextAfter().B(v.Method + ": ")
-			var cardBody = card.Div().Class("card-body")
 			if len(v.QueryValues.Values) > 0 {
+				var cardBody = card.Div().Class("card-body")
 				var cardText = cardBody.Div().Class("card-text")
 				var cardList = cardText.Ul().Class("list-group list-group-flush")
 				for _, v := range v.QueryValues.Values {
