@@ -130,10 +130,10 @@ func GenMakeRequest(body *elems.Element, queryList *queryvalues.QueryValues, req
 	colOne.Add(
 		elems.Div().Class("row").Add(
 			elems.Div().Class("col-8").Add(
-				elems.H3("Request URL").Class("mt-3"),
+				elems.H3("Request URL"),
 			),
 			elems.Div().Class("col-4").Add(
-				rqtypeBox.Class("mt-3"),
+				rqtypeBox,
 			),
 		),
 		form.Class("mt-2"),

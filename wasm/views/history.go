@@ -22,10 +22,11 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 	body.WasmClearInnerHTML()
 	var base = body.Div().Class("container")
 	var Header = base.Div().Style(
-		"background-color", "#fff",
-		"padding", "10px",
-		"border-radius", "5px",
-		"margin-bottom", "10px",
+		"background-color: #fff",
+		"padding: 10px",
+		"border-radius: 5px",
+		"margin-bottom: 10px",
+		"margin-top: 10px",
 	)
 	Header.H2("History").Class("text-center")
 	histDiv := base.Div().ID("history")
@@ -119,7 +120,7 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 				var contentHeaders = modalHeaders.Div()
 				contentHeaders.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
 				for k, v := range rq_headers {
-					contentHeaders.P().InnerText(k + ": " + strings.Join(v, ", ")).Style("line-height:50%")
+					contentHeaders.P(strings.Join(v, ", ")).Style("line-height:50%").TextAfter().B(k + ": ")
 				}
 				var modalHeader = modal.Div().Class("modal-header")
 				modalHeader.H5().Class("modal-title").InnerText("Body")
