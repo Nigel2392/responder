@@ -1,4 +1,5 @@
 import * as _ from "./wasm/wasm_exec";
+// import img from "./assets/ITEXTRA.png";
 
 var go = new Go();
 
@@ -18,3 +19,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 export var app = document.getElementById("app");
+// window.LogoURL = img;

@@ -5,6 +5,7 @@ package main
 
 import (
 	"strconv"
+	"syscall/js"
 
 	"github.com/Nigel2392/gen/elems"
 	"github.com/Nigel2392/gen/predef/navbars"
@@ -13,7 +14,9 @@ import (
 var WAITER = make(chan struct{})
 
 func main() {
-	var header, controls, urls = navbars.WailsFrame("", URLS)
+	var logoUrl = js.Global().Get("document").Call("getElementById", "LogoURL").Get("href").String()
+	// var logoUrl = js.Global().Get("window").Get("LogoURL").String()
+	var header, controls, urls = navbars.WailsFrame(logoUrl, URLS)
 	var style, offsetHeight = navbars.WailsFrameCss(30, "#333333", "#9200ff")
 	var base = elems.Div()
 	var head = base.Section()

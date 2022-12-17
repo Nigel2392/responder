@@ -1,8 +1,7 @@
 {
-  "NoHash": true,
   "$schema": "https://wails.io/schemas/config.v2.json",
-  "name": "Frameless",
-  "outputfilename": "Frameless",
+  "name": "Responder",
+  "outputfilename": "Responder",
   "frontend:install": "npm install",
   "frontend:build": "npm run build",
   "frontend:dev:watcher": "npm run dev",
