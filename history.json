@@ -1,0 +1,50 @@
+{
+  "Saves": [
+    {
+      "QueryValues": {
+        "Values": null
+      },
+      "Method": "GET",
+      "URL": "https://api.github.com",
+      "RsHeaders": {
+        "Cache-Control": [
+          "public, max-age=60, s-maxage=60"
+        ],
+        "Content-Length": [
+          "530"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Etag": [
+          "\"4f825cc84e1c733059d46e76e6df9db557ae5254f9625dfe8e1b09499c449438\""
+        ],
+        "X-Github-Media-Type": [
+          "github.v3; format=json"
+        ],
+        "X-Github-Request-Id": [
+          "FA86:133ED:AFA0DBD:B1F7EDC:639DBB51"
+        ],
+        "X-Ratelimit-Limit": [
+          "60"
+        ],
+        "X-Ratelimit-Remaining": [
+          "58"
+        ],
+        "X-Ratelimit-Reset": [
+          "1671285015"
+        ],
+        "X-Ratelimit-Resource": [
+          "core"
+        ],
+        "X-Ratelimit-Used": [
+          "2"
+        ]
+      },
+      "RsBody": "ewogICJjdXJyZW50X3VzZXJfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlciIsCiAgImN1cnJlbnRfdXNlcl9hdXRob3JpemF0aW9uc19odG1sX3VybCI6ICJodHRwczovL2dpdGh1Yi5jb20vc2V0dGluZ3MvY29ubmVjdGlvbnMvYXBwbGljYXRpb25zey9jbGllbnRfaWR9IiwKICAiYXV0aG9yaXphdGlvbnNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vYXV0aG9yaXphdGlvbnMiLAogICJjb2RlX3NlYXJjaF91cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9zZWFyY2gvY29kZT9xPXtxdWVyeX17JnBhZ2UscGVyX3BhZ2Usc29ydCxvcmRlcn0iLAogICJjb21taXRfc2VhcmNoX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3NlYXJjaC9jb21taXRzP3E9e3F1ZXJ5fXsmcGFnZSxwZXJfcGFnZSxzb3J0LG9yZGVyfSIsCiAgImVtYWlsc191cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2VyL2VtYWlscyIsCiAgImVtb2ppc191cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9lbW9qaXMiLAogICJldmVudHNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vZXZlbnRzIiwKICAiZmVlZHNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vZmVlZHMiLAogICJmb2xsb3dlcnNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlci9mb2xsb3dlcnMiLAogICJmb2xsb3dpbmdfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlci9mb2xsb3dpbmd7L3RhcmdldH0iLAogICJnaXN0c191cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9naXN0c3svZ2lzdF9pZH0iLAogICJodWJfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vaHViIiwKICAiaXNzdWVfc2VhcmNoX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3NlYXJjaC9pc3N1ZXM/cT17cXVlcnl9eyZwYWdlLHBlcl9wYWdlLHNvcnQsb3JkZXJ9IiwKICAiaXNzdWVzX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL2lzc3VlcyIsCiAgImtleXNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlci9rZXlzIiwKICAibGFiZWxfc2VhcmNoX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3NlYXJjaC9sYWJlbHM/cT17cXVlcnl9JnJlcG9zaXRvcnlfaWQ9e3JlcG9zaXRvcnlfaWR9eyZwYWdlLHBlcl9wYWdlfSIsCiAgIm5vdGlmaWNhdGlvbnNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vbm90aWZpY2F0aW9ucyIsCiAgIm9yZ2FuaXphdGlvbl91cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9vcmdzL3tvcmd9IiwKICAib3JnYW5pemF0aW9uX3JlcG9zaXRvcmllc191cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9vcmdzL3tvcmd9L3JlcG9zez90eXBlLHBhZ2UscGVyX3BhZ2Usc29ydH0iLAogICJvcmdhbml6YXRpb25fdGVhbXNfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vb3Jncy97b3JnfS90ZWFtcyIsCiAgInB1YmxpY19naXN0c191cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9naXN0cy9wdWJsaWMiLAogICJyYXRlX2xpbWl0X3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3JhdGVfbGltaXQiLAogICJyZXBvc2l0b3J5X3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3tvd25lcn0ve3JlcG99IiwKICAicmVwb3NpdG9yeV9zZWFyY2hfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vc2VhcmNoL3JlcG9zaXRvcmllcz9xPXtxdWVyeX17JnBhZ2UscGVyX3BhZ2Usc29ydCxvcmRlcn0iLAogICJjdXJyZW50X3VzZXJfcmVwb3NpdG9yaWVzX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXIvcmVwb3N7P3R5cGUscGFnZSxwZXJfcGFnZSxzb3J0fSIsCiAgInN0YXJyZWRfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlci9zdGFycmVkey9vd25lcn17L3JlcG99IiwKICAic3RhcnJlZF9naXN0c191cmwiOiAiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9naXN0cy9zdGFycmVkIiwKICAidG9waWNfc2VhcmNoX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3NlYXJjaC90b3BpY3M/cT17cXVlcnl9eyZwYWdlLHBlcl9wYWdlfSIsCiAgInVzZXJfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMve3VzZXJ9IiwKICAidXNlcl9vcmdhbml6YXRpb25zX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXIvb3JncyIsCiAgInVzZXJfcmVwb3NpdG9yaWVzX3VybCI6ICJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL3t1c2VyfS9yZXBvc3s/dHlwZSxwYWdlLHBlcl9wYWdlLHNvcnR9IiwKICAidXNlcl9zZWFyY2hfdXJsIjogImh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vc2VhcmNoL3VzZXJzP3E9e3F1ZXJ5fXsmcGFnZSxwZXJfcGFnZSxzb3J0LG9yZGVyfSIKfQo=",
+      "Timestamp": "2022-12-17T13:52:14.9814554+01:00"
+    }
+  ],
+  "Fname": "",
+  "MaximumItems": 0
+}

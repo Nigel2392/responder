@@ -112,19 +112,22 @@ func ViewHistory(body *elems.Element, args []js.Value, u *url.URL) {
 					"flex-direction:column",
 				)
 				var modalClose = modal.Button().Class("btn", "btn-secondary").InnerText("Close").Onclick("this.closest('.overlay').remove()")
+				var modalheadHeader = modal.Div().Class("modal-header")
+				modalheadHeader.H5().Class("modal-title").InnerText("Headers")
 				modalClose.Style("padding:10px", "margin:10px")
+				var modalHeaders = modal.Div().Class("modal-body")
+				var contentHeaders = modalHeaders.Div()
+				contentHeaders.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
+				contentHeaders.Pre().InnerText(v.URL)
+				for k, v := range rq_headers {
+					contentHeaders.P().InnerText(k + ": " + strings.Join(v, ", ")).Style("line-height:50%")
+				}
 				var modalHeader = modal.Div().Class("modal-header")
 				modalHeader.H5().Class("modal-title").InnerText("Body")
 				var modalBody = modal.Div().Class("modal-body")
 				var contentBody = modalBody.Div().Class("content-body")
 				contentBody.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
 				contentBody.Pre().InnerText(string(rq_body))
-				var modalHeaders = modal.Div().Class("modal-body")
-				var contentHeaders = modalHeaders.Div()
-				contentHeaders.Style("height:100%", "overflow:auto", "border:1px solid #ccc", "padding:10px")
-				for k, v := range rq_headers {
-					contentHeaders.P().InnerText(k + ": " + strings.Join(v, ", "))
-				}
 
 				// var modalFooter = modal.Div()
 				//modalFooter.Style(
